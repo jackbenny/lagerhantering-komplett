@@ -335,11 +335,11 @@ int new(struct myData *datap, int numRec)
 
 void printUsage(char *arg)
 {
-    fprintf(stderr, "Usage: %s [-l] [-s name]"
-            "[-m name \n" 
+    fprintf(stderr, "Usage: %s [-l] [-s name] "
+            "[-m name] \n" 
             "[-d name] [-n] [-h]\n\n"
         "-l      = list the articles in the database\n"
-        "-s name = search for an 'name' in the database\n"
+        "-s name = search for an article named 'name' in the database\n"
         "-m name = modify the article named 'name' in the database\n"
         "     You'll then have the choice to change name, quantity "
             "and price.\n"
