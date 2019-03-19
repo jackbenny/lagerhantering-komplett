@@ -245,7 +245,7 @@ void modify(struct myData *datap, int numRec, char *name)
 
 void delete(struct myData *datap, int numRec, char *name)
 {
-    int i, j; /* För foop-looparna */
+    int i, j; /* För for-looparna */
     int match = 0;
     FILE *newfp; /* Ny filpekare för denna funktion */
     int answer;
