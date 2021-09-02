@@ -25,7 +25,7 @@ void list(struct myData *datap, int numRec);
 void search(struct myData *datap, int numRec, char *name);
 void modify(struct myData *datap, int numRec, char *name);
 void delete(struct myData *datap, int numRec, char *name);
-int new(struct myData *datap, int numRec);
+int new(struct myData *datap);
 void printUsage(char *arg);
 void printHeader(void);
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     
     /* Kontrollera om filen finns och är läs- och skrivbar.
        Om inte, fråga om vi ska skapa den och börja läsa 
-       in artiklar. access() är ett systemanrop för UNIX-miljöer */
+       in artiklar. access() är ett systemanrop för Unixmiljöer */
     if ( access(filename, R_OK|W_OK) != 0 )
     {
         /* Använd fprintf() för att skriva felmeddelanden 
@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
                till artiklar i lagret, en i taget */
             numRec = 1;
             data = calloc(numRec, sizeof(struct myData));
-            new(data, numRec);
+            new(data);
             free(data);
             return 0;
         }
@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
     if ( newart == 1 )
     {
         data = calloc(1, sizeof(struct myData));
-        if ( new(data, numRec) == 1 )
+        if ( new(data) == 1 )
             return 1;
     }
 
@@ -233,7 +233,7 @@ void modify(struct myData *datap, int numRec, char *name)
         exit(1);
     }
     /* Öppna filen i skrivläge och skriv ut den modifierade 
-       strukten till filen */
+       strukturen till filen */
     if ( (newfp = fopen(filename, "wb")) == 0 )
     {
         fprintf(stderr, "Could not open file for writing\n");
@@ -295,7 +295,7 @@ void delete(struct myData *datap, int numRec, char *name)
     }
 }
 
-int new(struct myData *datap, int numRec)
+int new(struct myData *datap)
 {
     FILE *fp;
     int bytes;
